@@ -1,6 +1,5 @@
 .article {
 	width: 100%;
-	min-height: 450px;
 
 	&_big {
 		padding: 55px 120px 70px 120px;
@@ -64,4 +63,13 @@
 
 	img {
 		max-width: 100%; }
+
+	&_yupi {
+
+		font-size: 16px;
+		
+		h1 {
+			font-size: 30px;
+		}
+	}
 }

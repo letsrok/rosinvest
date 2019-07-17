@@ -5,6 +5,7 @@
 $(document).ready(function(){
 	widthVid ();
 	headerFix();
+	videoPlay();
 });
 
 $(window).on('resize', function(){
@@ -30,4 +31,31 @@ function headerFix(){
 	} else {
 		$('.menu__wrapper').removeClass('fixed');
 	}
+}
+
+function videoPlay(){
+	const playlist  = [
+		'images/test-2.mp4', 'images/test-1.mp4',
+	];
+	const videoLen = playlist.length;
+	const videoDiv = $('.video-main');
+
+	if(videoDiv.length >= 1) {
+		let i = 1;
+
+		videoDiv.attr('src', playlist[i-1]);
+
+		videoDiv.get(0).play();
+
+		videoDiv.on('ended', function(){
+			i++;
+			if (i > videoLen) { i = 1};
+			
+			videoDiv.attr('src', playlist[i-1]);
+			videoDiv.get(0).load();
+			videoDiv.get(0).play();
+	})
+	}
+	
+
 }

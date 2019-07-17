@@ -248,6 +248,31 @@ $(document).ready(function () {
       prevEl: '.slider__button_prev'
     }
   });
+  var sliderOtzyvy = new Swiper('.slider_otzyvy', {
+    slidesPerView: 3,
+    centeredSlides: true,
+    speed: 1000,
+    loop: true,
+    spaceBetween: 24,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    navigation: {
+      nextEl: '.slider__button_otz_prev',
+      prevEl: '.slider__button_otz_next'
+    },
+    breakpoints: {
+      988: {
+        slidesPerView: 2,
+        centeredSlides: false
+      },
+      685: {
+        slidesPerView: 1,
+        autoHeight: true
+      }
+    }
+  });
   var ww = 998;
 
   function calcHide() {
@@ -277,6 +302,7 @@ $(document).ready(function () {
 $(document).ready(function () {
   widthVid();
   headerFix();
+  videoPlay();
 });
 $(window).on('resize', function () {
   widthVid();
@@ -299,5 +325,29 @@ function headerFix() {
     $('.menu__wrapper').addClass('fixed');
   } else {
     $('.menu__wrapper').removeClass('fixed');
+  }
+}
+
+function videoPlay() {
+  var playlist = ['images/test-2.mp4', 'images/test-1.mp4'];
+  var videoLen = playlist.length;
+  var videoDiv = $('.video-main');
+
+  if (videoDiv.length >= 1) {
+    var i = 1;
+    videoDiv.attr('src', playlist[i - 1]);
+    videoDiv.get(0).play();
+    videoDiv.on('ended', function () {
+      i++;
+
+      if (i > videoLen) {
+        i = 1;
+      }
+
+      ;
+      videoDiv.attr('src', playlist[i - 1]);
+      videoDiv.get(0).load();
+      videoDiv.get(0).play();
+    });
   }
 }

@@ -195,3 +195,17 @@
 	}
 }
 
+.slider_otzyvy {
+	height: 349px!important;
+	width: calc(100% - 118px);
+	margin: 0 auto;
+
+	@include screen('sm', max) {
+		height: auto!important;
+		width: calc(100% - 0px);
+	}
+	
+}
+
+
+
