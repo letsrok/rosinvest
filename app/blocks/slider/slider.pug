@@ -1,0 +1,21 @@
+mixin slider(pagination, buttons)
+  +b.slider&attributes(attributes).swiper-container.js-slider
+    .swiper-wrapper
+      block
+    if pagination
+      +e.dots
+        +e.dot
+    if buttons
+      .wrap.slider-wrap
+        +e.button._prev
+        +e.button._next
+
+mixin slide(title)
+  .swiper-slide
+    +e.slide&attributes(attributes)
+      if title
+        .wrap
+          .slider__box
+            .slider__title !{title}
+            a.slider__more(href="") Подробнее
+      block

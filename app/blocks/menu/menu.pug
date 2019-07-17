@@ -1,0 +1,33 @@
+mixin menu()
+  +b.NAV.nav&attributes(attributes)
+    +e.prev Назад
+    +e.UL.ul
+      +e.LI.item
+        +e.A(href='').link._parent Сбережения
+        +e.A(href='').link._second условия размещения
+        +e.UL.drop
+          +e.LI.item._drop
+            +e.A.link._drop(href='') Действуй
+          +e.LI.item._drop
+            +e.A.link._drop(href='') Накопительный
+          +e.LI.item._drop
+            +e.A.link._drop(href='') Доходный
+          +e.LI.item._drop
+            +e.A.link._drop(href='') До востребования
+      +e.LI.item
+        +e.A(href='').link Страхование сбережений
+        +e.A(href='').link._second гарантии
+      +e.LI.item
+        +e.A(href='').link._single Акции
+      +e.LI.item
+        +e.A(href='').link._single Займы
+      +e.LI.item
+        +e.A(href='').link._single._parent Компания
+    +e.social
+      ul
+        li
+          a(href="/")
+            img(src="images/inst_icon.png", alt="")
+        li
+          a(href="/")
+            img(src="images/vk_icon.png", alt="")    

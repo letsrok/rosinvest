@@ -1,0 +1,197 @@
+.slider {
+
+	&__wrap {
+		position: relative;
+		height: 896px;
+	}
+
+	&-wrap {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		padding-top: 50px;
+
+	}
+
+	&__button {
+		width: 38px;
+		height: 38px;
+		display: flex;
+		align-items: center;
+		background-color: #009fdf;
+		border-radius: 50%;
+		z-index: 10;
+		position: absolute;
+		cursor: pointer;
+		transition: all .3s ease;
+		top: 141px;
+
+		&:hover {
+			background-color: #0a2973;
+
+			&::before {
+				border-color: #fff;
+			}
+		}
+
+		&::before {
+			content: '';
+			width: 12px;
+			height: 12px;
+			border-top: 1px solid ;
+			border-left: 1px solid ;
+			border-color: #fff;
+			position: relative;
+			transition: all .3s ease;
+		}
+
+		&_prev {
+			right: 75px;
+
+			&::before {
+				transform: rotate(-45deg);
+				right: -15px;
+			}
+		}
+
+		&_next {
+			right: 20px;
+
+			&::before {
+				transform: rotate(135deg);
+				right: -10px;
+			}
+		}
+	}
+
+	&__box {
+		position: absolute;
+		top: 190px;
+		right: 0;
+		z-index: 10;
+		max-width: 440px;
+		width: 100%;
+	}
+
+	&__title {
+		background-color: #009fdf;
+		font-size: 17px;
+		line-height: 25px;
+		letter-spacing: 0.85px;
+		padding: 15px 38px;
+		color: #fff;
+	}
+
+
+	&__more {
+		position: relative;
+		width: 150px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding: 0 32px;
+		font-size: 15px;
+		color: #fff;
+		text-decoration: none;
+		letter-spacing: 0.75px;
+		margin-top: 10px;
+		background-color: #ed1c24;
+		transition: $tr;
+		
+		&::after {
+			content: '';
+			position: absolute;
+			right: 16px;
+			top: 50%;
+			transform: translateY(-50%) rotate(-45deg);
+			border-right: 1px solid #fff;
+			border-bottom: 1px solid #fff;
+			width: 6px;
+			height: 6px;
+			transition: $tr;
+		}
+
+		&:hover {
+			color: #fff;
+			background-color: #0a2973;
+
+			&::after {
+				border-color: #3a69db;
+			}
+		}
+	}
+
+	@include screen('xl', max) {
+
+		&__box {
+			max-width: 320px;
+			right: 15px;
+		}
+	}
+
+	@include screen('md', max) {
+
+		&__box {
+			top: 100px;
+			max-width: 50%;
+		}
+
+		&__button {
+			top: 50px;
+		}
+	}
+
+	@include screen('sm', max) {
+
+		&__box {
+			max-width: 80%;
+		}
+	}
+ }
+
+.swiper {
+
+	&-container {
+		height: 896px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	&-wrapper {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	&-slide {
+		position: relative;
+		height: 100%;
+		flex-shrink: 0;
+
+		.wrap {
+			position: relative;
+		}
+	}
+
+	&-button-disabled {
+		pointer-events: none;
+	}
+
+	@include screen('md', max) {
+		
+		&-container {
+			height: 500px;
+		}
+	}
+
+	@include screen('sm', max){
+
+		&-container {
+			height: 350px;
+		}
+	}
+}
+
