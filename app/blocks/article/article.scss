@@ -1,11 +1,23 @@
 .article {
 	width: 100%;
+	min-height: 450px;
 
 	&_big {
 		padding: 55px 120px 70px 120px;
 
 		@include screen('xxl', max) {
 			padding: 55px 25px 70px;
+		}
+	}
+
+	&_common {
+		min-height: auto;
+		font-size: 16px;
+		letter-spacing: 0.48px;
+		line-height: 24px;
+
+		h1 {
+			font-size: 30px;
 		}
 	}
 
@@ -63,13 +75,4 @@
 
 	img {
 		max-width: 100%; }
-
-	&_yupi {
-
-		font-size: 16px;
-		
-		h1 {
-			font-size: 30px;
-		}
-	}
 }

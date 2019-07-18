@@ -1,0 +1,224 @@
+extends ../layouts/default
+
+block head
+  - var pageTitle = 'BSS70'
+
+block content
+
+  +b.HEADER.header
+    +e.wrap.wrap
+      +e.logo
+        a(href="/" title="РосИнвест")
+          img(src="images/logo.png")
+          span РосИнвест
+      +e.location
+        p Город - <span class="location-city">Томск </span>
+        a(href="/" data-popup="popup-location").js-popup Выбрать город
+      +e.time
+        p пн.-пт. 10:00 - 19:00
+        p сб. 10:00 - 16:00
+        p вс. выходной
+      +e.phone
+        p
+          strong 8 800 555 2202
+        p
+          strong 8 3822 203 203
+        p
+          strong 8 3822 204 204
+        +e.call
+          a(href="" data-popup="popup-feedback").js-popup Заказать обратный звонок
+  .wrapper.menu__wrapper
+    .wrap
+      .menu
+        +menu()
+      +burger
+  .main.main.main_common
+    .wrap
+      +article.article_common
+        +b.calcs
+            +e.top
+                +e.H1.title Сбережения
+                +e.line
+            +e.box
+                +b.calcul
+                  +e.wrap
+                    +e.image
+                      img(src="images/zero.jpg")
+                    +e.title Тариф - Доходный
+                    +e.form
+                      +e.item
+                        +e.head Сумма:
+                        +e.INPUT.input(id="form-1-summ" class="form-summ")
+                        +e.info от 10 000 рублей
+                      +e.item
+                        +e.head Срок:
+                        +e.INPUT.input(id="form-1-time" class="form-time") 
+                        +e.info 3-36 месяцев
+                      +e.item
+                        +e.head._big Ставка в год:
+                        +e.INPUT.input._small(readonly id="form-1-proc" class="form-proc")
+                        +e.info %
+                      +e.item
+                        +e.head._big Капитализация:
+                        +radio('capital', 'no', 'true') Нет
+                      +e.item
+                        +e.head._big Налог:
+                        +e.INPUT.input( readonly id="form-1-nalog" class="form-nalog")
+                        +e.info рублей
+                      +e.line
+                      +e.item
+                        +e.head._big._strong Сумма к выплате:
+                        +e.INPUT.input._small(readonly id="form-1-total" class="form-total")
+                        +e.info рублей
+                      +e.bottom
+                        +e.A(href="/" data-popup="popup-feedback").send.js-popup Оставить заявку
+                        +e.A(href="/").about О тарифе
+                +b.calcul
+                  +e.wrap
+                    +e.image
+                      img(src="images/zero.jpg")
+                    +e.title Тариф - Накопительный
+                    +e.form
+                      +e.item
+                        +e.head Сумма:
+                        +e.INPUT.input(id="form-2-summ" class="form-summ")
+                        +e.info от 10 000 рублей
+                      +e.item
+                        +e.head Срок:
+                        +e.INPUT.input(id="form-2-time" class="form-time") 
+                        +e.info 3-36 месяцев
+                      +e.item
+                        +e.head._big Ставка в год:
+                        +e.INPUT.input._small(readonly id="form-2-proc" class="form-proc")
+                        +e.info %
+                      +e.item
+                        +e.head._big Капитализация:
+                        +radio('capital-2', 'no', 'true') Нет
+                        +radio('capital-2', 'yes', 'false') Нет
+                      +e.item
+                        +e.head._big Налог:
+                        +e.INPUT.input( readonly id="form-2-nalog" class="form-nalog")
+                        +e.info рублей
+                      +e.line
+                      +e.item
+                        +e.head._big._strong Сумма к выплате:
+                        +e.INPUT.input._small(readonly id="form-2-total" class="form-total")
+                        +e.info рублей
+                      +e.bottom
+                        +e.A(href="/" data-popup="popup-feedback").send.js-popup Оставить заявку
+                        +e.A(href="/").about О тарифе
+                +b.calcul
+                  +e.wrap
+                    +e.image
+                      img(src="images/zero.jpg")
+                    +e.title Тариф - До востребования
+                    +e.form
+                      +e.item
+                        +e.head Сумма:
+                        +e.INPUT.input(id="form-3-summ" class="form-summ")
+                        +e.info от 10 000 рублей
+                      +e.item
+                        +e.head Срок:
+                        +e.INPUT.input(id="form-3-time" class="form-time") 
+                        +e.info 3-36 месяцев
+                      +e.item
+                        +e.head._big Ставка в год:
+                        +e.INPUT.input._small(readonly id="form-2-proc" class="form-proc")
+                        +e.info %
+                      +e.item
+                        +e.head._big Капитализация:
+                        +radio('capital-3', 'no', 'true') Нет
+                        +radio('capital-3', 'yes', 'false') Нет
+                      +e.item
+                        +e.head._big Налог:
+                        +e.INPUT.input( readonly id="form-3-nalog" class="form-nalog")
+                        +e.info рублей
+                      +e.line
+                      +e.item
+                        +e.head._big._strong Сумма к выплате:
+                        +e.INPUT.input._small(readonly id="form-3-total" class="form-total")
+                        +e.info рублей
+                      +e.bottom
+                        +e.A(href="/" data-popup="popup-feedback").send.js-popup Оставить заявку
+                        +e.A(href="/").about О тарифе
+                +b.calcul
+                  +e.wrap
+                    +e.image
+                      img(src="images/zero.jpg")
+                    +e.title Тариф - Удобный
+                    +e.form
+                      +e.item
+                        +e.head Сумма:
+                        +e.INPUT.input(id="form-3-summ" class="form-summ")
+                        +e.info от 10 000 рублей
+                      +e.item
+                        +e.head Срок:
+                        +e.INPUT.input(id="form-3-time" class="form-time") 
+                        +e.info 3-36 месяцев
+                      +e.item
+                        +e.head._big Ставка в год:
+                        +e.INPUT.input._small(readonly id="form-2-proc" class="form-proc")
+                        +e.info %
+                      +e.item
+                        +e.head._big Капитализация:
+                        +radio('capital-3', 'no', 'true') Нет
+                        +radio('capital-3', 'yes', 'false') Нет
+                      +e.item
+                        +e.head._big Налог:
+                        +e.INPUT.input( readonly id="form-3-nalog" class="form-nalog")
+                        +e.info рублей
+                      +e.line
+                      +e.item
+                        +e.head._big._strong Сумма к выплате:
+                        +e.INPUT.input._small(readonly id="form-3-total" class="form-total")
+                        +e.info рублей
+                      +e.bottom
+                        +e.A(href="/" data-popup="popup-feedback").send.js-popup Оставить заявку
+                        +e.A(href="/").about О тарифе
+                        
+      
+  +b.FOOTER.footer
+    +e.wrapper.wrapper
+      +e.wrap.wrap
+        +e.top
+          +e.nav
+            +e.title Навигация
+            ul
+              li
+                a(href="/") Сбережения
+              li
+                a(href="/") Займы
+              li
+                a(href="/") Компания
+              li
+                a(href="/") Акции
+              li
+                a(href="/") Страхование сбережений
+              li
+                a(href="/") Контакты
+          +e.cont
+            +e.title Связь с нами
+            +e.phones
+              p 8 800 555 2202
+          +e.grafic
+            +e.title Режим работы
+            +e.time
+              p пн.-пт. 10:00 - 20:00
+              p сб. 11:00 - 15:00
+              p вс. выходной
+          +e.adress
+            +e.title Адреса
+            +e.adress-info
+              p г. Томск, пр-т. Ленина 187, офис 15
+          +e.copyright
+            p © 2019. РосИнвест
+        +e.info
+          p * Процентная ставка устанавливается при заключении договора сбережений на срок равный 18 месяцев по тарифу «Действуй». Сумма сбережений от 10 000 (десяти тысяч) рублей, начисление процентов на сумму сбережений начинается в день, следующий за датой заключения договора передачи личных сбережений между пайщиком и КПК «ЗЕНИТ», выплата процентов ежемесячно либо в конце срока договора в отделениях с капитализацией. В соответствии с действующим законодательством, из суммы начисленных процентов удерживается НДФЛ. При досрочном расторжении договора передачи личных сбережений по инициативе пайщика применяется процентная ставка, равная 2% годовых. * Кредитный потребительский кооператив «ЗЕНИТ», ИНН 1001337785. Сбережения пайщиков застрахованы в полном объеме в НКО «МОВС», ИНН 7839045118. КПК «ЗЕНИТ» состоит в Союз СРО «Центральное кредитное объединение", ИНН 7708238331. Деятельность КПК «ЗЕНИТ» осуществляется под контролем ЦБ РФ и регулируется ФЗ No 190 «О кредитной кооперации». Для заключения договора размещения сбережений необходимо вступить в члены кооператива — подать заявление и оплатить вступительный взнос 100 рублей и членский взнос 50 рублей. Пайщик солидарно несёт субсидиарную ответственность по обязательствам кооператива в пределах невнесенной части дополнительного взноса. ** Подробности по телефону и в отделениях организации.
+        +e.bss
+          p Создание сайта - <a href="http://bss70.ru" target="_blank">bss70.ru</a> 
+  
+  +popups
+    +popup.popup-feedback
+      +feedback
+    +popup.popup-location
+      +locations  
