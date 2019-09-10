@@ -271,9 +271,8 @@ $(document).ready(function () {
       prevEl: '.slider__button_prev'
     }
   });
-  var sliderOtzyvy = new Swiper('.slider_otzyvy', {
+  var sliderOtzyv = new Swiper('.slider-otzyv', {
     slidesPerView: 3,
-    centeredSlides: true,
     speed: 1000,
     loop: true,
     spaceBetween: 24,
@@ -282,17 +281,16 @@ $(document).ready(function () {
       disableOnInteraction: false
     },
     navigation: {
-      nextEl: '.slider__button_otz_prev',
-      prevEl: '.slider__button_otz_next'
+      nextEl: '.otzyv-btn-next',
+      prevEl: '.otzyv-btn-prev'
     },
     breakpoints: {
-      988: {
-        slidesPerView: 2,
-        centeredSlides: false
+      878: {
+        slidesPerView: 2
       },
       685: {
-        slidesPerView: 1,
-        autoHeight: true
+        autoHeight: true,
+        slidesPerView: 1
       }
     }
   });
@@ -394,5 +392,41 @@ function videoPlay() {
       videoDiv.get(0).load();
       videoDiv.get(0).play();
     });
+  }
+}
+
+$('#calc__summ, #calc__mouth').on('keyup', function () {
+  $(this).val($(this).val().replace(/\D/, ''));
+  calcMain();
+});
+
+function calcMain() {
+  var userSumm = +$('#calc__summ').val(),
+      userMouth = +$('#calc__mouth').val(),
+      stavka = 10,
+      ndfl = 13,
+      days = 365,
+      summMouth = userSumm / userMouth;
+
+  if (userSumm > 0 && userMouth > 0) {
+    /*Считаем остаток долга*/
+    var ostatokDolga = [];
+
+    for (var i = 1; i <= userMouth; i++) {
+      ostatokDolga.push(userSumm - i * summMouth);
+      console.log(i);
+    }
+
+    console.log(ostatokDolga);
+    /* Считаем доход в месяц */
+
+    var proc = userSumm / 365 * stavka / 100;
+    var dohod = proc * 31 * userMouth;
+    var dohodMouth = proc * 31;
+    var total = dohod + userSumm;
+    $('#calc__proc').val(dohodMouth.toFixed(2));
+    $('#calc__proc-total').val(dohod.toFixed(2));
+    $('#calc__total-summ').val(total.toFixed(2));
+    console.log(proc, proc * 30, dohod);
   }
 }

@@ -59,3 +59,49 @@ function videoPlay(){
 	
 
 }
+
+$('#calc__summ, #calc__mouth').on('keyup', function () {
+	$(this).val($(this).val().replace (/\D/, ''));
+	calcMain()
+});
+
+function calcMain(){
+	let userSumm = +$('#calc__summ').val(),
+		userMouth = +$('#calc__mouth').val(),
+		stavka = 10,
+		ndfl = 13,
+		days = 365,
+		summMouth = userSumm/userMouth;
+
+
+	if(userSumm>0 && userMouth> 0) {
+		/*Считаем остаток долга*/
+		let ostatokDolga = [];  
+
+		for(let i=1; i<=userMouth; i++){
+			ostatokDolga.push(userSumm - (i*summMouth));
+			console.log(i)
+		}
+
+		console.log(ostatokDolga)
+
+		/* Считаем доход в месяц */
+
+		let proc = userSumm/365*stavka/100
+
+		let dohod = proc*31*userMouth;
+		let dohodMouth = proc*31;
+		let total = dohod + userSumm;
+
+		$('#calc__proc').val(dohodMouth.toFixed(2));
+		$('#calc__proc-total').val(dohod.toFixed(2));
+		$('#calc__total-summ').val(total.toFixed(2));
+		
+		
+
+		console.log(proc,proc*30,dohod)
+
+	}
+
+		
+}

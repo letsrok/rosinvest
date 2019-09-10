@@ -4,14 +4,14 @@ mixin calc()
     +e.box
       +e.input-wrap
         +e.input-text Сумма сбережений, (руб.)
-        +e.INPUT.input(id="calc__summ")
+        +e.INPUT.input(id="calc__summ" value="100000")
       +e.input-wrap
         +e.input-text Срок (мес.)
-        +e.INPUT.input(id="calc__mouth")
+        +e.INPUT.input(id="calc__mouth" value="12")
     +e.box
       +e.input-wrap
         +e.input-text Ставка по сбережениям (%)
-        +e.INPUT.input(id="calc__stavka" readonly)
+        +e.INPUT.input(id="calc__stavka" readonly value="10")
       +e.input-wrap
         +e.input-text Капитализация процентов
         +e.input-radio
