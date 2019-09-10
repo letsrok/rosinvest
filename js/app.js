@@ -1,6 +1,29 @@
 "use strict";
 
+/* Accordions Begin */
+var DURATION = 250;
+$(document).on('click', '.accordion__header', function (e) {
+  e.preventDefault();
+  var button = $(this),
+      block = button.parents('.accordion'),
+      body = block.find('.accordion__body'),
+      isMultiple = block.parents('.accordions').data('accordion-multiple');
+  body.slideToggle(DURATION);
+  setTimeout(function () {
+    block.toggleClass('is-active');
+  }, DURATION);
+
+  if (!isMultiple) {
+    var siblings = block.siblings('.accordion');
+    siblings.find('.accordion__body').slideUp(DURATION);
+    setTimeout(function () {
+      siblings.removeClass('is-active');
+    }, DURATION);
+  }
+});
+/* Accordions End */
 // Feedback Begin
+
 $('.feedback__input_requied').on('change', function () {
   verifyForm($(this));
 });
@@ -248,6 +271,29 @@ $(document).ready(function () {
       prevEl: '.slider__button_prev'
     }
   });
+  var sliderOtzyv = new Swiper('.slider-otzyv', {
+    slidesPerView: 3,
+    speed: 1000,
+    loop: true,
+    spaceBetween: 24,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    navigation: {
+      nextEl: '.otzyv-btn-next',
+      prevEl: '.otzyv-btn-prev'
+    },
+    breakpoints: {
+      878: {
+        slidesPerView: 2
+      },
+      685: {
+        autoHeight: true,
+        slidesPerView: 1
+      }
+    }
+  });
   var ww = 998;
 
   function calcHide() {
@@ -272,11 +318,34 @@ $(document).ready(function () {
     calcShow();
   });
 }); // Slider End
+
+/*Tabs Begin*/
+
+$('.tabs__tab').on('click', function () {
+  var tabParent = $(this).parent('ul').attr('data-tabs'),
+      tabNumber = $(this).index(),
+      tabTarget = $(document).find('[data-tab="' + tabParent + '"]');
+  $(this).addClass('tabs__tab_active').siblings().removeClass('tabs__tab_active');
+  tabTarget.children().removeClass('tabs__content_active');
+  tabTarget.children().eq(tabNumber).addClass('tabs__content_active');
+});
+$('.tabs-filters__tab').on('click', function () {
+  var tabParent = $(this).parent('ul').attr('data-tabs'),
+      tabFilter = $(this).attr('data-tab-filter'),
+      tabTarget = $(document).find('[data-tab="' + tabParent + '"]');
+  $(this).addClass('tabs-filters__tab_active').siblings().removeClass('tabs-filters__tab_active');
+  tabTarget.children().not(".".concat(tabFilter)).fadeOut(300);
+  setTimeout(function () {
+    tabTarget.children(".".concat(tabFilter)).fadeIn(300);
+  }, 300);
+});
+/*Tabs End*/
 // адаптация видео
 
 $(document).ready(function () {
   widthVid();
   headerFix();
+  videoPlay();
 });
 $(window).on('resize', function () {
   widthVid();
@@ -299,5 +368,65 @@ function headerFix() {
     $('.menu__wrapper').addClass('fixed');
   } else {
     $('.menu__wrapper').removeClass('fixed');
+  }
+}
+
+function videoPlay() {
+  var playlist = ['images/test-2.mp4', 'images/test-1.mp4'];
+  var videoLen = playlist.length;
+  var videoDiv = $('.video-main');
+
+  if (videoDiv.length >= 1) {
+    var i = 1;
+    videoDiv.attr('src', playlist[i - 1]);
+    videoDiv.get(0).play();
+    videoDiv.on('ended', function () {
+      i++;
+
+      if (i > videoLen) {
+        i = 1;
+      }
+
+      ;
+      videoDiv.attr('src', playlist[i - 1]);
+      videoDiv.get(0).load();
+      videoDiv.get(0).play();
+    });
+  }
+}
+
+$('#calc__summ, #calc__mouth').on('keyup', function () {
+  $(this).val($(this).val().replace(/\D/, ''));
+  calcMain();
+});
+
+function calcMain() {
+  var userSumm = +$('#calc__summ').val(),
+      userMouth = +$('#calc__mouth').val(),
+      stavka = 10,
+      ndfl = 13,
+      days = 365,
+      summMouth = userSumm / userMouth;
+
+  if (userSumm > 0 && userMouth > 0) {
+    /*Считаем остаток долга*/
+    var ostatokDolga = [];
+
+    for (var i = 1; i <= userMouth; i++) {
+      ostatokDolga.push(userSumm - i * summMouth);
+      console.log(i);
+    }
+
+    console.log(ostatokDolga);
+    /* Считаем доход в месяц */
+
+    var proc = userSumm / 365 * stavka / 100;
+    var dohod = proc * 31 * userMouth;
+    var dohodMouth = proc * 31;
+    var total = dohod + userSumm;
+    $('#calc__proc').val(dohodMouth.toFixed(2));
+    $('#calc__proc-total').val(dohod.toFixed(2));
+    $('#calc__total-summ').val(total.toFixed(2));
+    console.log(proc, proc * 30, dohod);
   }
 }
