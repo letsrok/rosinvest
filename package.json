@@ -55,7 +55,7 @@
     "postcss-discard-comments": "^4.0.2",
     "postcss-discard-duplicates": "^4.0.2",
     "postcss-import": "^12.0.1",
-    "swiper": "^4.5.0",
+    "swiper": "^6.5.1",
     "util": "^0.12.0",
     "webpack": "^4.32.2",
     "webpack-stream": "^5.2.1"
